@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Basic Calculator</title>
+  <style>
+    body {
+      background-color: gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .calculator {
+      background-color: black;
+      width: 350px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);}
+    .calculator input[type="text"] {
+      width: 65%;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      text-align: right;
+      padding: 10px; /* Added padding */}
+    .calculator .btn {
+      width: 70px;
+      height: 70px;
+      margin: 5px;
+      font-size: 24px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+      padding: 10px;}
+    .number-btn {
+      text-align: right;}
+    .operator-btn {
+      text-align: left;}
+    .ac-btn {
+      width: 15%;
+      padding: 10px; }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" readonly>
+    <button class="btn ac-btn" onclick="clearDisplay()" style="background-color: green;">AC</button>
+    <button class="btn number-btn" onclick="appendToDisplay('7')">7</button>
+    <button class="btn number-btn" onclick="appendToDisplay('8')">8</button>
+    <button class="btn number-btn" onclick="appendToDisplay('9')">9</button>
+    <button class="btn operator-btn" onclick="appendToDisplay('+')" style="background-color: gray;">+</button>
+    <button class="btn number-btn" onclick="appendToDisplay('4')">4</button>
+    <button class="btn number-btn" onclick="appendToDisplay('5')">5</button>
+    <button class="btn number-btn" onclick="appendToDisplay('6')">6</button>
+    <button class="btn operator-btn" onclick="appendToDisplay('-')" style="background-color: gray;">-</button>
+    <button class="btn number-btn" onclick="appendToDisplay('1')">1</button>
+    <button class="btn number-btn" onclick="appendToDisplay('2')">2</button>
+    <button class="btn number-btn" onclick="appendToDisplay('3')">3</button>
+    <button class="btn operator-btn" onclick="appendToDisplay('*')" style="background-color: gray;">*</button>
+    <button class="btn number-btn" onclick="appendToDisplay('0')">0</button>
+    <button class="btn" onclick="appendToDisplay('.')">.</button> <!-- Decimal point button -->
+    <button class="btn" onclick="calculateResult()">=</button>
+    <button class="btn operator-btn" onclick="appendToDisplay('/')" style="background-color: gray;">/</button>
+  </div>
+
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculateResult() {
+      var displayValue = document.getElementById('display').value;
+      try {
+        var result = eval(displayValue);
+        document.getElementById('display').value = result;
+      } catch (error) {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
