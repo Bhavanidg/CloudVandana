@@ -6,10 +6,7 @@ const rl = readline.createInterface({
 });
 
 rl.question("Enter numbers separated by commas: ", (input) => {
-  // Split the input into an array of numbers
   const numbers = input.split(',').map(Number);
-
-  // Using the sort() method with a custom compare function
   numbers.sort(function(a, b) {
     return b - a;
   });
